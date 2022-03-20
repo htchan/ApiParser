@@ -8,7 +8,7 @@ import (
 	"strings"
 	"errors"
 
-	"fmt"
+	// "fmt"
 )
 
 var baseDirectory string
@@ -81,5 +81,5 @@ func parseResponseWithFormat(response string, format Format) *Result {
 func Parse(response string, identifier string) *Result {
 	format, err := identifier2Format(identifier)
 	if err != nil { return nil}
-	return parseResponseWithFormat(response, format)
+	return parseResponseWithFormat(response, *format)
 }
