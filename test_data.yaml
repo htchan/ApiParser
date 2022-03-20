@@ -1,0 +1,6 @@
+test_key:
+  data:
+    - "data regex 1"
+    - "data regex 2"
+    - "data regex 3"
+  items: "items regex"
