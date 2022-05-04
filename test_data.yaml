@@ -1,4 +1,0 @@
-test_key:
-  data:
-    - "\"Page\": (?P<Page>.*?),"
-  items: "{ \"name\": \"(?P<Name>.*?)\" }"

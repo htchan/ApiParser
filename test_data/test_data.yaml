@@ -1,0 +1,8 @@
+test_key:
+  data:
+    - "\"Page\": (?P<Page>.*?),"
+  items: "{ \"name\": \"(?P<Name>.*?)\" }"
+test_key2:
+  data:
+    - Page
+  items: "items"
