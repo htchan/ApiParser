@@ -1,23 +1,24 @@
 package internal
 
 type Data map[string]string
+type Items []Data
 
 func (data Data) Data(key string) string {
 	return data[key]
 }
 
 type Result struct {
-	data Data
-	items []Data
+	Data Data
+	Items Items
 }
 
-func (result Result) Data(key string) string {
-	return result.data.Data(key)
+func (result Result) GetData(key string) string {
+	return result.Data.Data(key)
 }
 
-func (result Result) Items(index int) Data {
-	if index >= len(result.items) || index < 0 {
+func (result Result) GetItems(index int) Data {
+	if index >= len(result.Items) || index < 0 {
 		return Data{}
 	}
-	return result.items[index]
+	return result.Items[index]
 }

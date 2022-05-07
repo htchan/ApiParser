@@ -15,13 +15,13 @@ func TestFormat(t *testing.T) {
 			t.Parallel()
 			content := `"{"Page": 5,"data": [{"name": "name 1"},{"name": "name 2"},{"name": "name 3"}]}"`
 			result := f.Parse(content)
-			if d := result.Data("Page"); d != "5" {
+			if d := result.GetData("Page"); d != "5" {
 				t.Errorf(`data: want "%v", got "%v"`, "5", d)
 			}
-			if len(result.items) != 3 {
-				t.Errorf(`items length: want %v, got %v`, 3, len(result.items))
+			if len(result.Items) != 3 {
+				t.Errorf(`items length: want %v, got %v`, 3, len(result.Items))
 			}
-			if d := result.Items(2).Data("Name"); d != "name 3" {
+			if d := result.GetItems(2).Data("Name"); d != "name 3" {
 				t.Errorf(`items 2: want "%v", got "%v"`, "name 3", d)
 			}
 		})
@@ -30,11 +30,11 @@ func TestFormat(t *testing.T) {
 			t.Parallel()
 			content := `"{}"`
 			result := f.Parse(content)
-			if len(result.data) != 0 {
-				t.Errorf(`data length: want "%v", got "%v"`, 0, len(result.data))
+			if len(result.Data) != 0 {
+				t.Errorf(`data length: want "%v", got "%v"`, 0, len(result.Data))
 			}
-			if len(result.items) != 0 {
-				t.Errorf(`items length: want %v, got %v`, 0, len(result.items))
+			if len(result.Items) != 0 {
+				t.Errorf(`items length: want %v, got %v`, 0, len(result.Items))
 			}
 		})
 	})

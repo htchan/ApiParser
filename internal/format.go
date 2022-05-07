@@ -12,14 +12,14 @@ type Format struct {
 func (format Format) Parse(content string) Result {
 	var result Result
 	// find data
-	result.data = make(Data)
+	result.Data = make(Data)
 	for _, dataRegex := range format.Data {
 		regex, err := regexp.Compile(dataRegex)
 		if err != nil { continue }
 		match := regex.FindStringSubmatch(content)
 		for i, name := range regex.SubexpNames() {
 			if i != 0 && name != "" && i < len(match) {
-				result.data[name] = match[i]
+				result.Data[name] = match[i]
 			}
 		}
 	}
@@ -28,12 +28,12 @@ func (format Format) Parse(content string) Result {
 	itemsRegex, err := regexp.Compile(format.Items)
 	if err != nil { return result }
 	matches := itemsRegex.FindAllStringSubmatch(content, -1)
-	result.items = make([]Data, len(matches))
+	result.Items = make([]Data, len(matches))
 	for i, match := range matches {
-		result.items[i] = make(Data)
+		result.Items[i] = make(Data)
 		for j, name := range itemsRegex.SubexpNames() {
 			if j != 0 && name != "" {
-				result.items[i][name] = match[j]
+				result.Items[i][name] = match[j]
 			}
 		}
 	}
